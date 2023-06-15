@@ -1,0 +1,166 @@
+@media (min-width: 1253px) and (max-width: 3550px) {
+    .p-button {
+        display: none !important;
+    }
+}
+
+@media all and (max-width: 1320px) {
+    .editorsBtn {
+        width: 90%;
+    }
+}
+
+@media all and (max-width: 1252px) {
+
+    /* Minor changes in content */
+    .p-button {
+        display: none !important;
+    }
+
+    .editorsBtn {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .searchBox,
+    .editorsPick {
+        width: 25%;
+    }
+
+    .mainCardsInside {
+        width: calc(50% - 40px);
+    }
+}
+
+@media all and (max-width: 1071px) {
+
+    /*Main Side Bar  */
+    .searchBox {
+        display: none;
+        width: 100%;
+    }
+
+    .mainCardsInside {
+        width: calc(75% - 20px);
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .headingSec {
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    .p-button {
+        display: block !important;
+    }
+
+    .playStoreSec {
+        flex-direction: column-reverse;
+    }
+
+    .customizebtn {
+        margin-bottom: 1.4rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .mainCardsInside {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .editorsPick {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 824px) {
+
+    /* Minor changes in content */
+    .editorsBtn {
+        width: auto;
+    }
+
+    #editorPosition {
+        width: auto;
+    }
+
+    .customizebtn {
+        width: 100% !important;
+        margin-bottom: 0.5rem;
+    }
+
+    .additionImage {
+        height: 40px;
+        width: 40px;
+    }
+
+    .custPara {
+        font-size: 16px;
+    }
+
+    .additionsDiv {
+        justify-content: center;
+    }
+}
+
+@media all and (max-width: 656px) {
+    .editorsBtn a {
+        font-size: 13px;
+    }
+
+    .additionImage {
+        height: 30px;
+        width: 30px;
+    }
+
+    .custPara {
+        font-size: 14px;
+    }
+
+    .additionsDiv {
+        justify-content: center;
+    }
+}
+
+@media all and (max-width: 580px) {
+    .mainDivContent {
+        width: 100% !important;
+    }
+
+    .editorsPick {
+        width: 100% !important;
+    }
+
+    .mainCardsInside {
+        flex-direction: column;
+    }
+
+    .twoBtns {
+        display: flex;
+    }
+
+    .promoteimg {
+        object-fit: cover;
+    }
+
+    .additionsDiv {
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .additionImage {
+        height: 40px;
+        width: 40px;
+        margin: 1rem 0.4rem 0px 0px;
+    }
+
+    .paraAdition {
+        white-space: unset;
+        text-align: justify;
+        width: 100%;
+    }
+}

@@ -1,0 +1,115 @@
+@media all and (max-width: 1220px) {
+  .greyText {
+    font-size: 13.5px;
+  }
+  .childCard h6 {
+    font-size: 13px;
+  }
+  .mainCard {
+    margin-top: 4rem;
+  }
+}
+
+@media all and (max-width: 1000px) {
+  .mainRowCards {
+    display: block !important;
+  }
+  .scrollbar_app_list {
+    width: 100%;
+  }
+  .mainCard {
+    height: 310px;
+    margin-top: 4rem;
+  }
+  .developBtn {
+    justify-content: flex-start;
+  }
+  .playSLinks {
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+@media all and (max-width: 991px) {
+  .edtech-banner-section-layers,
+  .edtech-banner-section-layers2 {
+    width: 100%;
+    border-top-right-radius: 0%;
+  }
+  .sidebar-banner-img {
+    height: 350px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .mainFlexForContent {
+    display: block;
+  }
+  .mainContent {
+    width: 100% !important;
+    margin: 0px;
+  }
+  .mainSide {
+    width: 100% !important;
+    padding-left: 0px;
+  }
+  .bottom-img {
+    width: 100%;
+    height: 130px;
+  }
+  .LinkMain {
+    font-size: 12px;
+  }
+  .sidebar-banner-img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media all and (max-width: 548px) {
+  .mainCard {
+    height: 330px;
+    margin-top: 4rem;
+  }
+  .spacingVideo {
+    display: block;
+  }
+  .videoSec {
+    width: 100%;
+  }
+  .textSec {
+    width: 100%;
+  }
+  .LinkBtn {
+    width: 100%;
+  }
+  .conten-heading-number {
+    padding: 2px 6px;
+    font-size: 20px;
+  }
+  .headingMains {
+    font-size: 20px;
+  }
+}
+@media all and (max-width: 431px) {
+  .greyText {
+    font-size: 12px;
+  }
+  .childCard h6 {
+    font-size: 15px;
+  }
+  .similarApp {
+    padding: 0px 5px !important;
+  }
+  .mainCard {
+    height: 340px;
+  }
+  .page-link {
+    padding: 4px 8px;
+  }
+  .developBtn {
+    justify-content: center;
+  }
+  .playSLinks {
+    justify-content: center;
+  }
+}

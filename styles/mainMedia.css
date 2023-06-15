@@ -1,0 +1,87 @@
+@media all and (max-width : 768px){
+    .navbarBrand{
+        height: 35px;
+        width: 110px;
+    }
+    .activeLink {
+        color: #fff !important;
+        font-size: 17px;
+        background: #7f0c67;
+        text-decoration: none;
+        padding: 3px 4px;
+        border-radius: 15px;
+        transition: .5s !important;
+    }
+    .HeaderLinks{
+        font-size: 17px;
+        border: 1px solid #7f0c67;
+        text-decoration: none;
+        padding: 3px 6px;
+        border-radius: 15px;
+    }
+    .landingBg {
+        margin-top: 76px;
+    }
+}
+@media all and (max-width: 556px){
+    .navbarBrand{
+        height: 25px;
+        width: 85px;
+    }
+    .activeLink {
+        color: #fff !important;
+        font-size: 15px;
+        background: #7f0c67;
+        text-decoration: none;
+        padding: 3px 4px;
+        border-radius: 15px;
+        transition: .5s !important;
+    }
+    .HeaderLinks{
+        font-size: 15px;
+        border: 1px solid #7f0c67;
+        text-decoration: none;
+        padding: 3px 4px;
+        border-radius: 15px;
+    }
+    .mainEdtechRow{
+        margin-top: 2.7rem !important;
+    }
+}
+
+@media all and (max-width: 498px){
+    .navbarBrand{
+        height: 25px;
+        width: 80px;
+    }
+}
+@media all and (max-width: 415px){
+    .activeLink {
+        color: #fff !important;
+        font-size: 13px;
+        background: #7f0c67;
+        text-decoration: none;
+        padding: 3px 4px;
+        border-radius: 15px;
+        transition: .5s !important;
+    }
+    .HeaderLinks{
+        font-size: 13px;
+        border: 1px solid #7f0c67;
+        text-decoration: none;
+        padding: 3px 4px;
+        border-radius: 15px;
+    }
+}
+
+@media all and (max-width : 405px){
+    .landingBg, .mainEdtechRow{
+        margin-top: 2.8rem !important;
+    }
+    .activeLink , .HeaderLinks{
+        font-size: 12px;
+    }
+    .displayNavbar{
+        padding: 10px 20px 10px 20px;
+    }
+}
