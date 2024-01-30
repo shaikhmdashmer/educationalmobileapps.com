@@ -46,7 +46,7 @@ export default function Home() {
                                                     data-widget_type="button.default">
                                                     <div className="elementor-widget-container">
                                                         <div className="elementor-button-wrapper">
-                                                            <Link href="/edtech-apps/?utm_source=EMA_HP&utm_medium=Hero_Btn&utm_campaign=Lead_gen">
+                                                            <Link href="/edtech-apps/">
                                                                 <a
                                                                     className="elementor-button-link elementor-button elementor-size-lg"
                                                                     role="button">
@@ -67,7 +67,7 @@ export default function Home() {
                                                     data-widget_type="button.default">
                                                     <div className="elementor-widget-container">
                                                         <div className="elementor-button-wrapper">
-                                                            <Link href="/educational-app/?utm_source=EMA_HP&utm_medium=Hero_Btn&utm_campaign=Lead_gen">
+                                                            <Link href="/educational-app/">
                                                                 <a
                                                                     className="elementor-button-link elementor-button elementor-size-sm"
                                                                     role="button">

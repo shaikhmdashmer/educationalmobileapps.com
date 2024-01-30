@@ -216,7 +216,7 @@ export default function InnerSkillPage({ pagedata, allcategoriesdata }) {
                             </div>
 
                             <button className="customizebtn">
-                                <Link href="https://appcostcalculator.redbytes.co.uk/?utm_source=New_Edu_Mobile_App_Dir&utm_medium=Wanna_Make_Btn&utm_campaign=Lead_Gen">
+                                <Link href="https://mobileappdevelopmentcost.com/Calculator/Domain/?utm_source=EMA_Dir&utm_medium=Wanna_App_Butn?&utm_campaign=Lead_gen">
                                     <a target="_blank" className="developAnc">
                                         Want To Develop Similar Apps ?
                                     </a>
@@ -301,7 +301,7 @@ export default function InnerSkillPage({ pagedata, allcategoriesdata }) {
                             </div>
 
                             <button className="customizebtn">
-                                <Link href="https://appcostcalculator.redbytes.co.uk/?utm_source=New_Edu_Mobile_App_Dir&utm_medium=Wanna_Make_Btn&utm_campaign=Lead_Gen">
+                                <Link href="https://mobileappdevelopmentcost.com/Calculator/Domain/?utm_source=EMA_Dir&utm_medium=Wanna_App_Butn?&utm_campaign=Lead_gen">
                                     <a target="_blank" className="developAnc">
                                         Want To Develop Similar Apps ?
                                     </a>

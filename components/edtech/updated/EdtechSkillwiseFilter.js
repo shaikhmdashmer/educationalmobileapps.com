@@ -37,13 +37,13 @@ export default function EdtechSkillwiseFilter(props) {
                                         {skillsetitems.description}
                                     </p>
                                 </div>
-                                <h6>Age Group : {skillsetitems.age}</h6>
+                                <h6>Age Group: {skillsetitems.age}</h6>
             
                                 <div className="similarApp">
                                     <div className="developBtn mb-3">
-                                        <Link href="https://appcostcalculator.redbytes.co.uk/?utm_source=New_Edu_Edtech_dir&utm_medium=Wanna_Make_Btn&utm_campaign=lead_gen">
+                                        <Link href="https://mobileappdevelopmentcost.com/Calculator/Domain/?utm_source=EMA_EdTech_Dir&utm_medium=Wanna_App_Butn?&utm_campaign=Lead_gen">
                                             <a target="_blank" rel="noreferrer" className="similar-btn-app">
-                                                Want to develop a similar aap?
+                                                Want to develop a similar aap ?
                                             </a>
                                         </Link>
                                     </div>

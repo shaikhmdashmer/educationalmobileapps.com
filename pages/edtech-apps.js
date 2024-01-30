@@ -46,11 +46,14 @@ export default function EdTechApps() {
         document.getElementById("scrollbarsection").scrollIntoView({ behavior: 'smooth' });
         document.querySelector('.skillsearch-wrapper').classList.add('skillsearch-wrapper-active')
         console.log(`${ageselected} & ${skillselected}`);
+       
         axios.get(`https://admin.educationalmobileapps.com/edtechsearch?Age=${ageselected}&Skill=${skillselected}`)
-            .then(response => {
-                setPosts(response.data);
-                setLoading(false);
-            });
+        .then(response => {
+            setPosts(response.data);
+            console.log("api response",response)
+            setLoading(false);
+        });
+     
     }
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -345,7 +348,7 @@ export default function EdTechApps() {
                                     <EdTechRecentBlogs appdatalist='online-learning' />
                                 </div>
                                 <div className="bottom-banner pt-4">
-                                    <Link href="https://appcostcalculator.redbytes.co.uk/?utm_source=New_Edu_Mob_App_Edtech_dir_pg&utm_medium=right_banner&utm_campaign=leadgen">
+                                    <Link href="https://mobileappdevelopmentcost.com/Calculator/Domain/?utm_source=EMA_EdTech_Dir&utm_medium=Right_Banner?&utm_campaign=Lead_gen">
                                         <a target="_blank" className="sidebar-banner">
                                             <img
                                                 alt=""

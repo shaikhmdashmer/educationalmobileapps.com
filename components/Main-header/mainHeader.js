@@ -150,7 +150,7 @@ const MainHeader = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                "title": "educationalmobileapps.com",
+                "title": "PDF Downloaded from PopUp EMA.COM",
                 "first_name": name,
                 "email": email,
                 "phone": phoneField,
@@ -160,7 +160,7 @@ const MainHeader = () => {
                 "address_line": "",
                 "latitude": "", "longitude": "",
                 "contact_lead": "Exit Intent Popup form (educationalmobileapps.com)",
-                "app_category": "",
+                "app_category": "PDF Downloaded from PopUp EMA.COM",
                 "category_text": "",
                 "app_platform": "",
                 "cross_platfrom_status": "",
@@ -168,7 +168,7 @@ const MainHeader = () => {
                 "grand_cost": "",
                 // "enq_date": enq_date,
                 "favourite": "",
-                "enq_through": "educationalmobileapps.com",
+                "enq_through": "PDF Downloaded from PopUp EMA.COM",
                 "enq_from": "No",
                 "enquiryfrom": "No",
                 "country_code": "Not Available",
@@ -235,12 +235,12 @@ const MainHeader = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <Link href="/educational-app/?utm_source=EMA_HP&utm_medium=Top_CTA_Btn&utm_campaign=Lead_gen">
+                                <Link href="/educational-app/">
                                     <a className={router.asPath === '/educational-app' ? "nav-link active" : "nav-link"}>Education App</a>
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link href="/edtech-apps/?utm_source=EMA_HP&utm_medium=Top_CTA_Btn&utm_campaign=Lead_gen">
+                                <Link href="/edtech-apps/">
                                     <a className={router.asPath === '/edtech-apps' ? "nav-link active" : "nav-link"}>Edtech App</a>
                                 </Link>
                             </li>
