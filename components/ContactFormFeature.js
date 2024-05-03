@@ -7,6 +7,20 @@ export default function ContactFormFeature(props) {
     const [email, setEmail] = useState('');
     const [phoneField, setPhoneField] = useState('');
     const enq_date = new Date();
+    const [userLive , setLiveLocation] =useState();
+    
+
+
+    useEffect(() => {
+        fetch('https://api.testreveal.com:3013/api/get-client-location')
+          .then(response => response.json())
+          .then(data => {
+            console.log("UserLocation" , data)
+            setLiveLocation(data)
+          })
+          .catch(error => console.log(error))
+      }, []);
+
 
     //Form function
     const handleSubmit = async (e) => {
@@ -19,6 +33,7 @@ export default function ContactFormFeature(props) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
+                
                 "title": "educationalmobileapps.com",
                 "first_name": name,
                 "email": email,
@@ -29,11 +44,11 @@ export default function ContactFormFeature(props) {
                 "address_line": "",
                 "latitude": "", "longitude": "",
                 "contact_lead": props.contactlead,
-                "app_category": "",
-                "category_text": "",
-                "app_platform": "",
-                "cross_platfrom_status": "",
-                "which_cross_platform": "",
+                "app_category": "Educationalmobileapps enquiry",
+                "category_text": "Educationalmobileapps enquiry",
+                "app_platform": "Educationalmobileapps enquiry",
+                "cross_platfrom_status": "Educationalmobileapps enquiry",
+                "which_cross_platform": "Educationalmobileapps enquiry",
                 "grand_cost": "",
                 // "enq_date": enq_date,
                 "favourite": "",
@@ -45,7 +60,7 @@ export default function ContactFormFeature(props) {
                 "choosen_devices": "NA",
                 "choosen_screen_count": 0,
                 "choosen_login_methods": [],
-                "choosen_features": [],
+                "choosen_features": [userLive.country_name , userLive.region_name , userLive.city , userLive.country_code , userLive.time_zone.current_time , userLive.currency.name , userLive.isp , userLive.latitude , userLive.longitude ],
                 "choosen_language": "NA",
                 "choosen_admin": "NA ",
                 "admin_efforts": 0,
@@ -63,9 +78,10 @@ export default function ContactFormFeature(props) {
                 "grand_total_efforts": 0,
                 "approx_cost": "NA",
                 "timeline_month": "NA",
-                "user_comment": "NA",
+                "user_comment": message,
                 // "mail_date": enq_date,
                 "apikey": "7dac0fcac909b349"
+                
             })
         }).then((res) => {
             console.log('Response received')

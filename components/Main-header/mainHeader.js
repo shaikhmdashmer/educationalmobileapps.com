@@ -12,6 +12,7 @@ const MainHeader = () => {
     const [email, setEmail] = useState('');
     const [phoneField, setPhoneField] = useState('');
     const enq_date = new Date();
+    const [userLive , setLiveLocation] =useState();
 
     //Form validation
     useEffect(() => {
@@ -67,6 +68,18 @@ const MainHeader = () => {
             });
     });
 
+
+    useEffect(() => {
+        fetch('https://api.testreveal.com:3013/api/get-client-location')
+          .then(response => response.json())
+          .then(data => {
+            console.log("UserLocation" , data)
+            setLiveLocation(data)
+          })
+          .catch(error => console.log(error))
+      }, []);
+
+
     //Form function
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -88,11 +101,11 @@ const MainHeader = () => {
                 "address_line": "",
                 "latitude": "", "longitude": "",
                 "contact_lead": "Download E-Book (educationalmobileapps.com)",
-                "app_category": "",
-                "category_text": "",
-                "app_platform": "",
+                "app_category": "Educationalmobileapps enquiry",
+                "category_text": "Educationalmobileapps enquiry",
+                "app_platform": "Educationalmobileapps enquiry",
                 "cross_platfrom_status": "",
-                "which_cross_platform": "",
+                "which_cross_platform": "Educationalmobileapps enquiry",
                 "grand_cost": "",
                 // "enq_date": enq_date,
                 "favourite": "",
@@ -103,8 +116,8 @@ const MainHeader = () => {
                 "choosen_approach": "NA",
                 "choosen_devices": "NA",
                 "choosen_screen_count": 0,
-                "choosen_login_methods": [],
-                "choosen_features": [],
+                "choosen_login_methods": ['Educationalmobileapps enquiry'],
+                "choosen_features": [userLive.country_name , userLive.region_name , userLive.city , userLive.country_code , userLive.time_zone.current_time , userLive.currency.name , userLive.isp , userLive.latitude , userLive.longitude ],
                 "choosen_language": "NA",
                 "choosen_admin": "NA ",
                 "admin_efforts": 0,
@@ -161,11 +174,11 @@ const MainHeader = () => {
                 "latitude": "", "longitude": "",
                 "contact_lead": "Exit Intent Popup form (educationalmobileapps.com)",
                 "app_category": "PDF Downloaded from PopUp EMA.COM",
-                "category_text": "",
-                "app_platform": "",
-                "cross_platfrom_status": "",
+                "category_text": "Educationalmobileapps enquiry",
+                "app_platform": "Educationalmobileapps enquiry",
+                "cross_platfrom_status": "Educationalmobileapps enquiry",
                 "which_cross_platform": "",
-                "grand_cost": "",
+                "grand_cost": "Educationalmobileapps enquiry",
                 // "enq_date": enq_date,
                 "favourite": "",
                 "enq_through": "PDF Downloaded from PopUp EMA.COM",
@@ -176,7 +189,7 @@ const MainHeader = () => {
                 "choosen_devices": "NA",
                 "choosen_screen_count": 0,
                 "choosen_login_methods": [],
-                "choosen_features": [],
+                "choosen_features": [userLive.country_name , userLive.region_name , userLive.city , userLive.country_code , userLive.time_zone.current_time , userLive.currency.name , userLive.isp , userLive.latitude , userLive.longitude ],
                 "choosen_language": "NA",
                 "choosen_admin": "NA ",
                 "admin_efforts": 0,

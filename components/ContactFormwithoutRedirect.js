@@ -7,6 +7,7 @@ export default function ContactFormwithoutRedirect(props) {
     const [email, setEmail] = useState('');
     const [phoneField, setPhoneField] = useState('');
     const [message, setMessage] = useState('');
+    const [userLive , setLiveLocation] =useState();
     const enq_date = new Date();
 
     //Form validation
@@ -29,6 +30,17 @@ export default function ContactFormwithoutRedirect(props) {
             });
     });
 
+
+    useEffect(() => {
+        fetch('https://api.testreveal.com:3013/api/get-client-location')
+          .then(response => response.json())
+          .then(data => {
+            console.log("UserLocation" , data)
+            setLiveLocation(data)
+          })
+          .catch(error => console.log(error))
+      }, []);
+
     //Form function
     const handleSubmit3 = async (e) => {
         e.preventDefault()
@@ -47,15 +59,15 @@ export default function ContactFormwithoutRedirect(props) {
                 "city": "Not Available, Not Available",
                 "state": "",
                 "country": "Not Available",
-                "address_line": "",
+                "address_line": "Educationalmobileapps Footer",
                 "latitude": "", "longitude": "",
                 "contact_lead": props.contactlead,
-                "app_category": "",
-                "category_text": "",
-                "app_platform": "",
+                "app_category": "Educationalmobileapps Footer",
+                "category_text": "Educationalmobileapps Footer",
+                "app_platform": "Educationalmobileapps Footer",
                 "cross_platfrom_status": "",
-                "which_cross_platform": "",
-                "grand_cost": "",
+                "which_cross_platform": "Educationalmobileapps Footer",
+                "grand_cost": "Educationalmobileapps enquiry",
                 // "enq_date": enq_date,
                 "favourite": "",
                 "enq_through": "educationalmobileapps.com",
@@ -66,7 +78,7 @@ export default function ContactFormwithoutRedirect(props) {
                 "choosen_devices": "NA",
                 "choosen_screen_count": 0,
                 "choosen_login_methods": [],
-                "choosen_features": [],
+                "choosen_features": [userLive.country_name , userLive.region_name , userLive.city , userLive.country_code , userLive.time_zone.current_time , userLive.currency.name , userLive.isp , userLive.latitude , userLive.longitude ],
                 "choosen_language": "NA",
                 "choosen_admin": "NA ",
                 "admin_efforts": 0,
