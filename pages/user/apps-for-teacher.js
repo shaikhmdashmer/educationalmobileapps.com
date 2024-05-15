@@ -111,7 +111,7 @@ export default function UserTeachertPage({ pagedata, allcategoriesdata, rightsid
             })
     }
 
-    const withoutSearch = pagedata.categoriesData && pagedata.categoriesData.map(carddata => {
+    const withoutSearch = pagedata.categoriesData && pagedata?.categoriesData?.map(carddata => {
         return (
             <div className="mainCardsMap" key={carddata.id}>
                 <div className="marginCardDiv"></div>

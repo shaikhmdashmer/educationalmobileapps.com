@@ -12,6 +12,7 @@ import '../styles/edtechMain.css';
 import '../styles/edtechMedia.css';
 import '../styles/landingpage.css';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-phone-input-2/lib/style.css'
 import { ToastContainer } from 'react-toastify';
 import Layout from '../components/Layout';
 import Router from "next/router";

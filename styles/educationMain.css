@@ -74,9 +74,9 @@ body {
 
 
 /* This Styles are of bootstrap class and thats customize */
-.col-lg-6 {
+/* .col-lg-6 {
     padding-left: 0px !important;
-}
+} */
 
 main {
     display: flex;

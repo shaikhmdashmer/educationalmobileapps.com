@@ -120,7 +120,7 @@ export default function EducationalMobileApps({ pagedata }) {
 
 
 
-    const withoutSearch = pagedata && pagedata.categoriesData.map(carddata => {
+    const withoutSearch = pagedata && pagedata?.categoriesData?.map(carddata => {
         return (
             <div className="mainCardsMap" key={carddata.id}>
                 <div className="marginCardDiv"></div>
