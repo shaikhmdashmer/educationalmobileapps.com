@@ -22,14 +22,14 @@ const Footerstrip = () => {
                   67/96/13 & 14, SMH Complex, Kamaleswaram, Thiruvananthapuram,
                   Kerala - 695009, India
                 </li>
-                <li className="mt-4">
+                {/* <li className="mt-4">
                   <strong>Contact No.:</strong>
                 </li>
                 <li>
                   <i className="fa fa-phone-alt"></i> India: +91 811 386 7000,
                   <br />
                   UK: +1 9295521900
-                </li>
+                </li> */}
                 <li className="mt-4">
                   <strong>Email Address:</strong>
                 </li>

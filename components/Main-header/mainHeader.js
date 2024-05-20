@@ -2,7 +2,7 @@ import ContactFormFeature from "../ContactFormFeature";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-
+import PhoneInput from 'react-phone-input-2'
 const MainHeader = () => {
   // download ebook form
   const QuryUrl = useRouter();
@@ -304,7 +304,7 @@ const MainHeader = () => {
                   </div>
                   <div className="col-lg-12 mb-3">
                     <div className="form-field has-validation">
-                      <input
+                      {/* <input
                         className="form-control"
                         type="number"
                         id="phonefield"
@@ -315,7 +315,20 @@ const MainHeader = () => {
                         }}
                         placeholder="Phone Number"
                         required
-                      />
+                      /> */}
+                      <PhoneInput
+                     country={userLive ? userLive.country_code.toLowerCase() : ''}
+                    //  country={userLive ? userLive.location.country_code : 'IN'}
+                      enableSearch={true}
+                      type="text"
+                      id="phonefield"
+                      name="phonefield"
+                      aria-describedby="inputGroupPrepend"
+                      onChange={(e) => setPhoneField(e)}
+                      placeholder="Phone Number"
+                     
+                      required
+                    />
                       <div className="invalid-feedback">
                         Please enter phone no.
                       </div>
@@ -417,7 +430,7 @@ const MainHeader = () => {
                   </div>
                   <div className="col-lg-12 mb-3">
                     <div className="form-field has-validation">
-                      <input
+                      {/* <input
                         className="form-control"
                         type="text"
                         id="phonefield"
@@ -428,7 +441,21 @@ const MainHeader = () => {
                         }}
                         placeholder="Phone Number"
                         required
-                      />
+                      /> */}
+                       <PhoneInput
+                     country={userLive ? userLive.country_code.toLowerCase() : ''}
+                    //  country={userLive ? userLive.location.country_code : 'IN'}
+                      enableSearch={true}
+                      type="text"
+                      id="phonefield"
+                      name="phonefield"
+                      aria-describedby="inputGroupPrepend"
+                      onChange={(e) => setPhoneField(e)}
+                      placeholder="Phone Number"
+                     
+                      required
+                    />
+            
                       <div className="invalid-feedback">
                         Please enter phone no.
                       </div>
