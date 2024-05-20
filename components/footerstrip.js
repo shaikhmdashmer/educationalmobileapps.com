@@ -1,6 +1,7 @@
 import ContactFormwithoutRedirect from "./ContactFormwithoutRedirect";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { FloatingWhatsApp } from "react-floating-whatsapp";
 
 const Footerstrip = () => {
   const router = useRouter();
@@ -109,7 +110,7 @@ const Footerstrip = () => {
           </div>
         </div>
       </div>
-      <div className="what-set">
+      {/* <div className="what-set">
         <a
           className="whatsapp-icon"
           href="https://api.whatsapp.com/send?phone=+918113860000&text= Hi Educational Mobile App Team,"
@@ -118,6 +119,15 @@ const Footerstrip = () => {
         >
           <i className="fab fa-whatsapp whatsapp-img"></i>
         </a>
+      </div> */}
+      <div className="Floatwp">
+        <FloatingWhatsApp
+          phoneNumber="918113860000"
+          accountName="Educational App"
+          avatar="/images/edsys.svg"
+          statusMessage="Active"
+          chatMessage={`Hi There,\nHow can i help you today!`}
+        />
       </div>
     </>
   );
