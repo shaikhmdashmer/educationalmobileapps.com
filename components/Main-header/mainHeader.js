@@ -15,7 +15,13 @@ const MainHeader = () => {
   const [phoneField, setPhoneField] = useState("");
   const [userLive, setLiveLocation] = useState();
 
+  const [getLoader, setLoader] = useState(false);
+  const [userMsg, setuserMsg] = useState("");
+
   const enq_date = new Date();
+
+  const [nameError, setNameError] = useState("");
+  const nameRegex = /^[a-zA-Z\s]*$/; // Allows only letters and whitespace
 
   //Form validation
   useEffect(() => {
@@ -49,6 +55,7 @@ const MainHeader = () => {
           } else {
             // console.log("Thanks for submission");
             document.querySelector(".formconfirm-msg1").style.display = "flex";
+            document.querySelector(".formconfirm-msg1").innerHTML = ""; // Clear the content
           }
           form.classList.add("was-validated");
         },
@@ -69,6 +76,7 @@ const MainHeader = () => {
           } else {
             // console.log("Thanks for submission");
             document.querySelector(".formconfirm-msg2").style.display = "flex";
+            document.querySelector(".formconfirm-msg2").innerHTML = ""; // Clear the content
           }
           form.classList.add("was-validated");
         },
@@ -90,6 +98,15 @@ const MainHeader = () => {
   //Form function
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!name.match(nameRegex)) {
+      setNameError("Please enter a valid name");
+      return;
+    } else {
+      setNameError("");
+    }
+
+    setLoader(true);
+
     console.log("Sending");
     await fetch("https://phonebook.redbytes.in/api/create_email_inquiry/", {
       method: "POST",
@@ -102,7 +119,7 @@ const MainHeader = () => {
         user_mail: email,
         user_location: userLive ? userLive.city : "Na",
         page_location: liveUrl ? liveUrl : liveUrlinital,
-        country_code: userLive ? userLive.location.calling_code : "Na",
+        // country_code: userLive ? userLive.location.calling_code : "Na",
         user_mobile: phoneField,
         user_message: "No Message",
         inquiry_through: UTM ? UTM : "No UTM",
@@ -125,6 +142,15 @@ const MainHeader = () => {
   // Exit intent form function
   const handleSubmit2 = async (e) => {
     e.preventDefault();
+    if (!name.match(nameRegex)) {
+      setNameError("Please enter a valid name");
+      return;
+    } else {
+      setNameError("");
+    }
+
+    setLoader(true);
+
     console.log("Sending");
     await fetch("https://phonebook.redbytes.in/api/create_email_inquiry/", {
       method: "POST",
@@ -137,7 +163,7 @@ const MainHeader = () => {
         user_mail: email,
         user_location: userLive ? userLive.city : "Na",
         page_location: liveUrl ? liveUrl : liveUrlinital,
-        country_code: userLive ? userLive.location.calling_code : "Na",
+        // country_code: userLive ? userLive.location.calling_code : "Na",
         user_mobile: phoneField,
         user_message: "No Message",
         inquiry_through: UTM ? UTM : "No UTM",
@@ -282,6 +308,17 @@ const MainHeader = () => {
                         Please type your Name
                       </div>
                     </div>
+                    {nameError && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontSize: 12,
+                          textAlign: "left",
+                        }}
+                      >
+                        {nameError}
+                      </p>
+                    )}
                   </div>
                   <div className="col-lg-12 mb-3">
                     <div className="form-field has-validation">
@@ -342,11 +379,16 @@ const MainHeader = () => {
                     </div>
                     <button
                       type="submit"
+                      disabled={getLoader}
                       className="btn btn-primary btn-rounded btn-lg"
                     >
                       Get Your Free E-Book{" "}
                       <i className="fa fa-arrow-right ms-2"></i>
                     </button>
+                    <br />
+                    {getLoader && <div className="loader"></div>}
+                    <strong className="text-center">{userMsg}</strong>
+                    <br />
                   </div>
                 </div>
               </form>
@@ -395,6 +437,17 @@ const MainHeader = () => {
                         Please type your Name
                       </div>
                     </div>
+                    {nameError && (
+                      <p
+                        style={{
+                          color: "red",
+                          fontSize: 12,
+                          textAlign: "left",
+                        }}
+                      >
+                        {nameError}
+                      </p>
+                    )}
                   </div>
                   <div className="col-lg-12 mb-3">
                     <div className="form-field has-validation">
@@ -455,11 +508,16 @@ const MainHeader = () => {
                     </div>
                     <button
                       type="submit"
+                      disabled={getLoader}
                       className="btn btn-primary btn-rounded btn-lg"
                     >
                       Get Your Free E-Book{" "}
                       <i className="fa fa-arrow-right ms-2"></i>
                     </button>
+                    <br />
+                    {getLoader && <div className="loader"></div>}
+                    <strong className="text-center">{userMsg}</strong>
+                    <br />
                   </div>
                 </div>
               </form>

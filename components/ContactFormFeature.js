@@ -19,6 +19,9 @@ export default function ContactFormFeature(props) {
 
   const enq_date = new Date();
 
+  const [nameError, setNameError] = useState("");
+  const nameRegex = /^[a-zA-Z\s]*$/; // Allows only letters and whitespace
+
   useEffect(() => {
     fetch("https://api.testreveal.com:3013/api/get-client-location")
       .then((response) => response.json())
@@ -32,6 +35,13 @@ export default function ContactFormFeature(props) {
   //Form function
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!name.match(nameRegex)) {
+      setNameError("Please enter a valid name");
+      return;
+    } else {
+      setNameError("");
+    }
+
     setLoader(true);
 
     console.log("Sending");
@@ -60,7 +70,7 @@ export default function ContactFormFeature(props) {
       if (res.status === 200) {
         console.log("Response succeeded!");
         setuserMsg("");
-        setLoader(false);
+        // setLoader(false);
         //router.push("/thank-you"); // Replace "/next-page-url" with your actual next page URL
       } else {
         console.log("Something went wrong...please check");
@@ -95,6 +105,11 @@ export default function ContactFormFeature(props) {
               />
               <div className="invalid-feedback">Please type your Name</div>
             </div>
+            {nameError && (
+              <p style={{ color: "red", fontSize: 12, textAlign: "left" }}>
+                {nameError}
+              </p>
+            )}
           </div>
           <div className="col-lg-12 mb-3">
             <div className="form-field has-validation">
@@ -151,10 +166,15 @@ export default function ContactFormFeature(props) {
             </div>
             <button
               type="submit"
+              disabled={getLoader}
               className="btn btn-primary btn-rounded btn-lg"
             >
               {props.submitbtntxt} <i className="fa fa-arrow-right ms-2"></i>
             </button>
+            <br />
+            {getLoader && <div className="loader"></div>}
+            <strong className="text-center">{userMsg}</strong>
+            <br />
           </div>
         </div>
       </form>
