@@ -1929,7 +1929,7 @@ export async function getStaticPaths() {
     const allcatsposts = await catres.json()
 
     
-    const paths = allcatsposts.message.map((slugname) => ({
+    const paths = allcatsposts?.message?.map((slugname) => ({
         params: { slug: slugname?.category_slug },
     }))
 
