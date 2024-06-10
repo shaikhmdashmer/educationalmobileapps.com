@@ -22,6 +22,13 @@ export default function ContactFormFeature(props) {
   //Form function
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!name.match(nameRegex)) {
+      setNameError("Please enter a valid name");
+      return;
+    } else {
+      setNameError("");
+    }
+
     setLoader(true);
 
     const ipResponse = await fetch('https://api.ipify.org?format=json');
@@ -93,6 +100,11 @@ export default function ContactFormFeature(props) {
               />
               <div className="invalid-feedback">Please type your Name</div>
             </div>
+            {nameError && (
+              <p style={{ color: "red", fontSize: 12, textAlign: "left" }}>
+                {nameError}
+              </p>
+            )}
           </div>
           <div className="col-lg-12 mb-3">
             <div className="form-field has-validation">
@@ -134,10 +146,15 @@ export default function ContactFormFeature(props) {
             
             <button
               type="submit"
+              disabled={getLoader}
               className="btn btn-primary btn-rounded btn-lg"
             >
               {props.submitbtntxt} <i className="fa fa-arrow-right ms-2"></i>
             </button>
+            <br />
+            {getLoader && <div className="loader"></div>}
+            <strong className="text-center">{userMsg}</strong>
+            <br />
           </div>
         </div>
       </form>

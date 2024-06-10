@@ -890,3 +890,16 @@ img {
     display: flex;
   }
 }
+/* ----- */
+.Floatwp {
+  display: none;
+}
+@media (max-width: 768px) {
+  .Floatwp {
+    display: flex;
+  }
+}
+.rotate-icon {
+  display: inline-block;
+  transform: rotate(90deg);
+}

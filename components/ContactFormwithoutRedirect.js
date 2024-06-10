@@ -19,6 +19,72 @@ export default function ContactFormwithoutRedirect(props) {
   const [message, setMessage] = useState("");
   const [subject , setSubject] = useState();
   const enq_date = new Date();
+  const [nameError, setNameError] = useState("");
+  const nameRegex = /^[a-zA-Z\s]*$/; // Allows only letters and whitespace
+  const [dropDownForm, setDropDown] = useState();
+  const [dropDownList, setDropDownList] = useState("");
+
+  // console.log("dropDownForm" ,dropDownForm);
+
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const [otherInputVisible, setOtherInputVisible] = useState(false);
+  const [otherInputValue, setOtherInputValue] = useState("");
+
+  const handleSelectChange = (e) => {
+    const value = e.target.value;
+    setSelectedOption(value);
+    if (value === "Other") {
+      setOtherInputVisible(true);
+    } else {
+      setOtherInputVisible(false);
+      setOtherInputValue(e.target.value);
+    }
+  };
+
+  const handleOtherInputChange = (e) => {
+    setOtherInputValue(e.target.value);
+  };
+
+  // dropdown
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("https://wp.redbytes.in/graphql", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query: `
+            query NewQuery {
+              contactformdropdowns(first: 50) {
+                nodes {
+                  title
+                  contacformdropdownredio {
+                    contacformdropdownredio
+                  }
+                }
+              }
+            }
+            `,
+          }),
+        });
+
+        const responseData = await response.json();
+        const fiterDRArray =
+          responseData?.data?.contactformdropdowns?.nodes?.filter(
+            (data) => data.title == "educationalmobileapps.com"
+          );
+        console.log("fiterDRArray", fiterDRArray);
+        setDropDown(fiterDRArray[0].contacformdropdownredio);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   //Form validation
   useEffect(() => {
@@ -33,7 +99,7 @@ export default function ContactFormwithoutRedirect(props) {
             event.stopPropagation();
           } else {
             // console.log("Thanks for submission");
-            
+            document.querySelector(".formconfirm-msg3").style.display = "block";
           }
           form.classList.add("was-validated");
         },
@@ -41,22 +107,11 @@ export default function ContactFormwithoutRedirect(props) {
       );
     });
   });
-  
-
-
 
   //Form function
   const handleSubmit3 = async (e) => {
     e.preventDefault();
- 
-    const ipResponse = await fetch('https://api.ipify.org?format=json');
-    const ipData = await ipResponse.json();
-  
-    // Fetch location data from your API route
-    const response = await fetch(`https://api.ipstack.com/${ipData.ip}?access_key=82ef51789ae7b253f10d71b6885bade5`);
-    let userIP = await response.json();
-
-
+    console.log("Sending");
     await fetch("https://phonebook.redbytes.in/api/create_email_inquiry/", {
       method: "POST",
       headers: {
@@ -69,7 +124,7 @@ export default function ContactFormwithoutRedirect(props) {
         user_mail: email,
         user_location: userIP ? userLive?.city : "No Permission",
         page_location: liveUrl ? liveUrl : liveUrlinital,
-        country_name : userIP?.country_name ,
+        country_code: userLive ? userLive.location.calling_code : "Na",
         user_mobile: phoneField,
         user_message: message,
         user_subject:  subject,
@@ -83,8 +138,12 @@ export default function ContactFormwithoutRedirect(props) {
       if (res.status === 200) {
         router.push("/thanks");
         console.log("Response succeeded!");
+        setuserMsg(
+          "We appreciate you taking the time. Our team will promptly reply to your inquiry."
+        );
       } else {
         console.log("Something went wrong...please check");
+        setLoader(false);
       }
     });
   };
@@ -115,6 +174,11 @@ export default function ContactFormwithoutRedirect(props) {
               />
               <div className="invalid-feedback">Please type your Name</div>
             </div>
+            {nameError && (
+              <p style={{ color: "red", fontSize: 12, textAlign: "left" }}>
+                {nameError}
+              </p>
+            )}
           </div>
           <div className="col-lg-6 mb-2">
             <div className="form-field has-validation">
@@ -169,8 +233,7 @@ export default function ContactFormwithoutRedirect(props) {
               <div className="invalid-feedback">Please enter  Subject no.</div>
             </div>
           </div>
-
-          <div className="col-lg-12 mb-2">
+          <div className="col-lg-12 mb-3">
             <div className="form-field has-validation">
               <textarea
                 className="form-control"
@@ -191,10 +254,15 @@ export default function ContactFormwithoutRedirect(props) {
             
             <button
               type="submit"
+              disabled={getLoader}
               className="btn btn-primary btn-rounded btn-lg"
             >
               {props.submitbtntxt} <i className="fa fa-arrow-right ms-2"></i>
             </button>
+            <br />
+            {getLoader && <div className="loader"></div>}
+            <strong className="text-center">{userMsg}</strong>
+            <br />
           </div>
         </div>
       </form>
