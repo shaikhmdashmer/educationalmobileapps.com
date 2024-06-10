@@ -43,20 +43,20 @@ export default function ContactFormwithoutRedirect(props) {
   });
   
 
-  useEffect(() => {
-    fetch("https://api.testreveal.com:3013/api/get-client-location")
-      .then((response) => response.json())
-      .then((data) => {
-        
-        setLiveLocation(data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+
 
   //Form function
   const handleSubmit3 = async (e) => {
     e.preventDefault();
-    console.log("Sending");
+ 
+    const ipResponse = await fetch('https://api.ipify.org?format=json');
+    const ipData = await ipResponse.json();
+  
+    // Fetch location data from your API route
+    const response = await fetch(`https://api.ipstack.com/${ipData.ip}?access_key=82ef51789ae7b253f10d71b6885bade5`);
+    let userIP = await response.json();
+
+
     await fetch("https://phonebook.redbytes.in/api/create_email_inquiry/", {
       method: "POST",
       headers: {
@@ -67,9 +67,9 @@ export default function ContactFormwithoutRedirect(props) {
         
         user_name: name,
         user_mail: email,
-        user_location: userLive ? userLive.city : "No Permission",
+        user_location: userIP ? userLive?.city : "No Permission",
         page_location: liveUrl ? liveUrl : liveUrlinital,
-        country_name : userLive.country_name ,
+        country_name : userIP?.country_name ,
         user_mobile: phoneField,
         user_message: message,
         user_subject:  subject,
@@ -138,7 +138,7 @@ export default function ContactFormwithoutRedirect(props) {
           <div className="col-lg-6 mb-2">
             <div className="form-field has-validation">
             <PhoneInput
-                     country={userLive ? userLive.country_code.toLowerCase() : ''}
+                     country={'in'}
                     //  country={userLive ? userLive.location.country_code : 'IN'}
                       enableSearch={true}
                       type="text"

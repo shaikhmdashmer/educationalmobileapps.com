@@ -19,20 +19,18 @@ export default function ContactFormFeature(props) {
 
   const enq_date = new Date();
 
-  useEffect(() => {
-    fetch("https://api.testreveal.com:3013/api/get-client-location")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("UserLocation", data);
-        setLiveLocation(data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
   //Form function
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoader(true);
+
+    const ipResponse = await fetch('https://api.ipify.org?format=json');
+    const ipData = await ipResponse.json();
+  
+    // Fetch location data from your API route
+    const response = await fetch(`https://api.ipstack.com/${ipData.ip}?access_key=82ef51789ae7b253f10d71b6885bade5`);
+    let userIP = await response.json();
+
 
     console.log("Sending");
     await fetch("https://phonebook.redbytes.in/api/create_email_inquiry/", {
@@ -44,9 +42,9 @@ export default function ContactFormFeature(props) {
       body: JSON.stringify({
         user_name: name,
         user_mail: email,
-        user_location: userLive ? userLive.city : "Na",
+        user_location: userIP ? userIP?.city : "Na",
         page_location: liveUrl ? liveUrl : liveUrlinital,
-        country_code: userLive ? userLive.location.calling_code : "Na",
+        country_code: userIP ? userIP?.location.calling_code : "Na",
         user_mobile: phoneField,
         user_message: "No Message",
         inquiry_through: UTM ? UTM : "No UTM",
@@ -118,7 +116,7 @@ export default function ContactFormFeature(props) {
           <div className="col-lg-12 mb-3">
             <div className="form-field has-validation">
             <PhoneInput
-                     country={userLive ? userLive.country_code.toLowerCase() : ''}
+                     country={'in'}
                     //  country={userLive ? userLive.location.country_code : 'IN'}
                       enableSearch={true}
                       type="text"

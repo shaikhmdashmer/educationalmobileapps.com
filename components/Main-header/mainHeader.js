@@ -77,20 +77,23 @@ const MainHeader = () => {
     });
   });
 
-  useEffect(() => {
-    fetch("https://api.testreveal.com:3013/api/get-client-location")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("UserLocation", data);
-        setLiveLocation(data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+
 
   //Form function
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Sending");
+
+
+    const ipResponse = await fetch('https://api.ipify.org?format=json');
+    const ipData = await ipResponse.json();
+  
+    // Fetch location data from your API route
+    const response = await fetch(`https://api.ipstack.com/${ipData.ip}?access_key=82ef51789ae7b253f10d71b6885bade5`);
+    let userIP = await response.json();
+
+
+
     await fetch("https://phonebook.redbytes.in/api/create_email_inquiry/", {
       method: "POST",
       headers: {
@@ -100,9 +103,9 @@ const MainHeader = () => {
       body: JSON.stringify({
         user_name: name,
         user_mail: email,
-        user_location: userLive ? userLive.city : "Na",
+        user_location: userIP ? userIP?.city : "Na",
         page_location: liveUrl ? liveUrl : liveUrlinital,
-        country_code: userLive ? userLive.location.calling_code : "Na",
+        country_code: userLive ? userIP.location.calling_code : "Na",
         user_mobile: phoneField,
         user_message: "No Message",
         inquiry_through: UTM ? UTM : "No UTM",
@@ -124,6 +127,15 @@ const MainHeader = () => {
 
   // Exit intent form function
   const handleSubmit2 = async (e) => {
+
+    const ipResponse = await fetch('https://api.ipify.org?format=json');
+    const ipData = await ipResponse.json();
+  
+    // Fetch location data from your API route
+    const response = await fetch(`https://api.ipstack.com/${ipData.ip}?access_key=82ef51789ae7b253f10d71b6885bade5`);
+    let userIP = await response.json();
+
+
     e.preventDefault();
     console.log("Sending");
     await fetch("https://phonebook.redbytes.in/api/create_email_inquiry/", {
@@ -135,9 +147,9 @@ const MainHeader = () => {
       body: JSON.stringify({
         user_name: name,
         user_mail: email,
-        user_location: userLive ? userLive.city : "Na",
-        page_location: liveUrl ? liveUrl : liveUrlinital,
-        country_code: userLive ? userLive.location.calling_code : "Na",
+        user_location: userIP ? userIP?.city : "Na",
+        page_location: userIP ? liveUrl : liveUrlinital,
+        country_code: userIP ? userIP?.location.calling_code : "Na",
         user_mobile: phoneField,
         user_message: "No Message",
         inquiry_through: UTM ? UTM : "No UTM",
@@ -317,7 +329,7 @@ const MainHeader = () => {
                         required
                       /> */}
                       <PhoneInput
-                     country={userLive ? userLive.country_code.toLowerCase() : ''}
+                     country={'in'}
                     //  country={userLive ? userLive.location.country_code : 'IN'}
                       enableSearch={true}
                       type="text"
@@ -443,7 +455,7 @@ const MainHeader = () => {
                         required
                       /> */}
                        <PhoneInput
-                     country={userLive ? userLive.country_code.toLowerCase() : ''}
+                     country={'in'}
                     //  country={userLive ? userLive.location.country_code : 'IN'}
                       enableSearch={true}
                       type="text"
