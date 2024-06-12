@@ -151,9 +151,7 @@ const Footerstrip = () => {
               />
               <div className="wa-chat-box-brand-text">
                 <div className="wa-chat-box-brand-name">Educational App</div>
-                <div className="wa-chat-box-brand-subtitle">
-                  appify your Business
-                </div>
+               
               </div>
               <div className="wa-chat-bubble-close-btn" onClick={toggleChatBox}>
                 <i

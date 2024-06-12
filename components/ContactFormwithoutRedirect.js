@@ -46,6 +46,8 @@ export default function ContactFormwithoutRedirect(props) {
     setOtherInputValue(e.target.value);
   };
 
+
+
   // dropdown
   useEffect(() => {
     async function fetchData() {
@@ -97,10 +99,11 @@ export default function ContactFormwithoutRedirect(props) {
           if (!form.checkValidity()) {
             event.preventDefault();
             event.stopPropagation();
-          } else {
-            // console.log("Thanks for submission");
-            document.querySelector(".formconfirm-msg3").style.display = "block";
-          }
+          } 
+          // else {
+          
+          //   document.querySelector(".formconfirm-msg3").style.display = "block";
+          // }
           form.classList.add("was-validated");
         },
         false
@@ -111,7 +114,14 @@ export default function ContactFormwithoutRedirect(props) {
   //Form function
   const handleSubmit3 = async (e) => {
     e.preventDefault();
-    console.log("Sending");
+
+    const ipResponse = await fetch('https://api.ipify.org?format=json');
+    const ipData = await ipResponse.json();
+  
+    // Fetch location data from your API route
+    const response = await fetch(`https://api.ipstack.com/${ipData.ip}?access_key=82ef51789ae7b253f10d71b6885bade5`);
+    const userIP = await response.json();
+
     await fetch("https://phonebook.redbytes.in/api/create_email_inquiry/", {
       method: "POST",
       headers: {
@@ -122,12 +132,12 @@ export default function ContactFormwithoutRedirect(props) {
         
         user_name: name,
         user_mail: email,
-        user_location: userIP ? userLive?.city : "No Permission",
+        user_location: userIP ? userIP?.city : "No Permission",
         page_location: liveUrl ? liveUrl : liveUrlinital,
-        country_code: userLive ? userLive.location.calling_code : "Na",
+        country_code: userIP ? userIP?.location?.calling_code : "Na",
         user_mobile: phoneField,
         user_message: message,
-        user_subject:  subject,
+        user_subject:  `${selectedOption,otherInputValue}`,
         inquiry_through: UTM ? UTM : "No UTM",
         website_source: "educationalmobileapps.com",
         apikey: "7dac0fcac909b349",
@@ -199,7 +209,7 @@ export default function ContactFormwithoutRedirect(props) {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 mb-2">
+          <div className="col-lg-6">
             <div className="form-field has-validation">
             <PhoneInput
                      country={'in'}
@@ -218,19 +228,23 @@ export default function ContactFormwithoutRedirect(props) {
           </div>
           <div className="col-lg-6 mb-2">
             <div className="form-field has-validation">
-              <input
-                className="form-control"
-                type="text"
-                id="phonefield"
-                name="phonefield"
-                aria-describedby="inputGroupPrepend"
-                onChange={(e) => {
-                  setSubject(e.target.value);
-                }}
-                placeholder="Subject"
-                required
-              />
-              <div className="invalid-feedback">Please enter  Subject no.</div>
+            <select className="form-control mediaWay" onChange={handleSelectChange}>
+                    <option selected disabled>Subject</option>
+                    {dropDownForm?.contacformdropdownredio?.map((item, index) => (
+                      <option key={index} value={item}>
+                        {item}
+                      </option>
+                    ))}
+                  </select>
+                  {otherInputVisible && (
+                    <input
+                      type="text"
+                      className="form-control other-sbj form-group my-2 has-validation"
+                      placeholder="Enter other subject"
+                      value={otherInputValue}
+                      onChange={handleOtherInputChange}
+                    />
+                  )}
             </div>
           </div>
           <div className="col-lg-12 mb-3">
@@ -250,7 +264,7 @@ export default function ContactFormwithoutRedirect(props) {
               <div className="invalid-feedback">Please enter you message</div>
             </div>
           </div>
-          <div className="col-lg-12">
+          <div className="col-lg-12 mb-2">
             
             <button
               type="submit"
