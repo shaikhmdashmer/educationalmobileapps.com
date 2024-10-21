@@ -123,7 +123,7 @@ const Post = props => {
                         <div className="developBtn mb-3">
                             <Link href="https://mobileappdevelopmentcost.com/Calculator/Domain/?utm_source=EMA_EdTech_Dir&utm_medium=Wanna_App_Butn?&utm_campaign=Lead_gen">
                                 <a target="_blank" className="similar-btn-app">
-                                    Want to develop a similar aap ?
+                                    Want to develop a similar app ?
                                 </a>
                             </Link>
                         </div>

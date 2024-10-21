@@ -30,7 +30,7 @@ export default function ContactFormFeature(props) {
     }
 
     setLoader(true);
-
+    setuserMsg("Loading.....");
     const ipResponse = await fetch('https://api.ipify.org?format=json');
     const ipData = await ipResponse.json();
   
@@ -54,25 +54,50 @@ export default function ContactFormFeature(props) {
         country_code: userIP ? userIP?.location.calling_code : "Na",
         user_mobile: phoneField,
         user_message: "No Message",
-        inquiry_through: UTM ? UTM : "No UTM",
+        inquiry_through: UTM ? UTM : "footer_form_btn",
         website_source: "educationalmobileapps.com",
         apikey: "7dac0fcac909b349",
         // recaptchaToken: recaptchaToken,
         Service: Service,
       }),
     }).then((res) => {
-      console.log("Response received");
       if (res.status === 200) {
-        console.log("Response succeeded!");
-        setuserMsg("");
-        setLoader(false);
-       
+        mailFunction()
       } else {
         console.log("Something went wrong...please check");
         setLoader(false);
       }
     });
   };
+
+
+  const mailFunction = async () => {
+    const requestData = {
+      name: name,
+      email: email,
+      pageURL: "educationalmobileapps.com",
+    };
+
+    try {
+      const response = await fetch('https://costcalculator.redbytes.in:3012/send-feedback-mail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      const result = await response.json();
+      setuserMsg("Check You Email");
+      router.push("/thanks"); 
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
+
+
   return (
     <>
       <form

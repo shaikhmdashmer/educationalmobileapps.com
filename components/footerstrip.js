@@ -178,7 +178,7 @@ const Footerstrip = () => {
               <a
                 role="button"
                 target="_blank"
-                href="https://api.whatsapp.com/send?phone=918113869000&amp;text=Hi, Educational App Team"
+                href="https://api.whatsapp.com/send?phone=918113860000&amp;text=Hi, Educational App Team"
                 title="WhatsApp"
                 className="wa-chat-box-content-send-btn"
               >

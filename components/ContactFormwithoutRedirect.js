@@ -138,25 +138,56 @@ export default function ContactFormwithoutRedirect(props) {
         user_mobile: phoneField,
         user_message: message,
         user_subject:  `${selectedOption,otherInputValue}`,
-        inquiry_through: UTM ? UTM : "No UTM",
-        website_source: "educationalmobileapps.com",
+        inquiry_through: UTM ? UTM : "footer_form_btn",
+        website_source: "www.educationalmobileapps.com",
         apikey: "7dac0fcac909b349",
         
       }),
     }).then((res) => {
       console.log("Response received");
       if (res.status === 200) {
-        router.push("/thanks");
-        console.log("Response succeeded!");
-        setuserMsg(
-          "We appreciate you taking the time. Our team will promptly reply to your inquiry."
-        );
+        mailFunction()
       } else {
         console.log("Something went wrong...please check");
         setLoader(false);
       }
     });
   };
+
+
+
+
+  const mailFunction = async () => {
+    const requestData = {
+      name: name,
+      email: email,
+      pageURL: "educationalmobileapps.com",
+    };
+
+    try {
+      const response = await fetch('https://costcalculator.redbytes.in:3012/send-feedback-mail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      const result = await response.json();
+      setuserMsg("Check You Email");
+      router.push("/thanks"); 
+      // console.log('Success:', result);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
+
+
+
+
+
   return (
     <>
       <form

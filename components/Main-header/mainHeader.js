@@ -24,66 +24,65 @@ const MainHeader = () => {
   const nameRegex = /^[a-zA-Z\s]*$/; // Allows only letters and whitespace
 
   //Form validation
-  useEffect(() => {
-    // exit intent code
-    function addEvent(obj, evt, fn) {
-      if (obj.addEventListener) {
-        obj.addEventListener(evt, fn, false);
-      } else if (obj.attachEvent) {
-        obj.attachEvent("on" + evt, fn);
-      }
-    }
-    addEvent(document, "mouseout", function (evt) {
-      if (evt.toElement == null && evt.relatedTarget == null) {
-        // alert('mouse bahar!');
-        document
-          .querySelector(".exitintent-popup")
-          .classList.add("exitintent-popup-active");
-      }
-    });
+  // useEffect(() => {
+ 
+  //   function addEvent(obj, evt, fn) {
+  //     if (obj.addEventListener) {
+  //       obj.addEventListener(evt, fn, false);
+  //     } else if (obj.attachEvent) {
+  //       obj.attachEvent("on" + evt, fn);
+  //     }
+  //   }
+  //   addEvent(document, "mouseout", function (evt) {
+  //     if (evt.toElement == null && evt.relatedTarget == null) {
+  //       document
+  //         .querySelector(".exitintent-popup")
+  //         .classList.add("exitintent-popup-active");
+  //     }
+  //   });
 
-    // form validation code header form 1
-    ("use strict");
-    var forms = document.querySelectorAll(".needs-validation1");
-    Array.prototype.slice.call(forms).forEach(function (form) {
-      form.addEventListener(
-        "submit",
-        function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          } else {
-            // console.log("Thanks for submission");
-            document.querySelector(".formconfirm-msg1").style.display = "flex";
-            document.querySelector(".formconfirm-msg1").innerHTML = ""; // Clear the content
-          }
-          form.classList.add("was-validated");
-        },
-        false
-      );
-    });
+  
+  //   ("use strict");
+  //   var forms = document.querySelectorAll(".needs-validation1");
+  //   Array.prototype.slice.call(forms).forEach(function (form) {
+  //     form.addEventListener(
+  //       "submit",
+  //       function (event) {
+  //         if (!form.checkValidity()) {
+  //           event.preventDefault();
+  //           event.stopPropagation();
+  //         } else {
+  //           // console.log("Thanks for submission");
+  //           document.querySelector(".formconfirm-msg1").style.display = "flex";
+  //           document.querySelector(".formconfirm-msg1").innerHTML = ""; // Clear the content
+  //         }
+  //         form.classList.add("was-validated");
+  //       },
+  //       false
+  //     );
+  //   });
 
-    //Form validation of Exit intent popup
-    ("use strict");
-    var forms = document.querySelectorAll(".needs-validation2");
-    Array.prototype.slice.call(forms).forEach(function (form) {
-      form.addEventListener(
-        "submit",
-        function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          } else {
-            // console.log("Thanks for submission");
-            document.querySelector(".formconfirm-msg2").style.display = "flex";
-            document.querySelector(".formconfirm-msg2").innerHTML = ""; // Clear the content
-          }
-          form.classList.add("was-validated");
-        },
-        false
-      );
-    });
-  });
+  //   //Form validation of Exit intent popup
+  //   ("use strict");
+  //   var forms = document.querySelectorAll(".needs-validation2");
+  //   Array.prototype.slice.call(forms).forEach(function (form) {
+  //     form.addEventListener(
+  //       "submit",
+  //       function (event) {
+  //         if (!form.checkValidity()) {
+  //           event.preventDefault();
+  //           event.stopPropagation();
+  //         } else {
+  //           // console.log("Thanks for submission");
+  //           document.querySelector(".formconfirm-msg2").style.display = "flex";
+  //           document.querySelector(".formconfirm-msg2").innerHTML = ""; // Clear the content
+  //         }
+  //         form.classList.add("was-validated");
+  //       },
+  //       false
+  //     );
+  //   });
+  // },[]);
 
 
 
@@ -423,7 +422,7 @@ const MainHeader = () => {
       </div>
 
       {/* exitintent-popup */}
-      <div className="exitintent-popup">
+      {/* <div className="exitintent-popup">
         <div className="exitintent-popup-overlay"></div>
         <div className="exitintent-popupinner">
           <div>
@@ -495,21 +494,10 @@ const MainHeader = () => {
                   </div>
                   <div className="col-lg-12 mb-3">
                     <div className="form-field has-validation">
-                      {/* <input
-                        className="form-control"
-                        type="text"
-                        id="phonefield"
-                        name="phonefield"
-                        aria-describedby="inputGroupPrepend"
-                        onChange={(e) => {
-                          setPhoneField(e.target.value);
-                        }}
-                        placeholder="Phone Number"
-                        required
-                      /> */}
+                     
                        <PhoneInput
                      country={'in'}
-                    //  country={userLive ? userLive.location.country_code : 'IN'}
+                   
                       enableSearch={true}
                       type="text"
                       id="phonefield"
@@ -564,7 +552,7 @@ const MainHeader = () => {
             <img src="/images/modal-image.webp" alt="EdTech apps" />
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

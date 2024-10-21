@@ -74,7 +74,7 @@ const OnlineLearningExpo = () => {
                 <div className="developBtn mb-3">
                   <Link href="https://appcostcalculator.redbytes.co.uk/?utm_source=edsys_edtech_dir&#038;utm_medium=wanna_make_btn&#038;utm_campaign=lead_gen">
                     <a target="_blank" className="similar-btn-app">
-                      Want to develop a similar aap?
+                      Want to develop a similar app?
                     </a>
                   </Link>
                 </div>
@@ -138,7 +138,7 @@ const OnlineLearningExpo = () => {
                 <div className="developBtn mb-3">
                   <Link href="https://appcostcalculator.redbytes.co.uk/?utm_source=edsys_edtech_dir&#038;utm_medium=wanna_make_btn&#038;utm_campaign=lead_gen">
                     <a target="_blank" className="similar-btn-app">
-                      Want to develop a similar aap?
+                      Want to develop a similar app?
                     </a>
                   </Link>
                 </div>
@@ -202,7 +202,7 @@ const OnlineLearningExpo = () => {
                 <div className="developBtn mb-3">
                   <Link href="https://appcostcalculator.redbytes.co.uk/?utm_source=edsys_edtech_dir&#038;utm_medium=wanna_make_btn&#038;utm_campaign=lead_gen">
                     <a target="_blank" className="similar-btn-app">
-                      Want to develop a similar aap?
+                      Want to develop a similar app?
                     </a>
                   </Link>
                 </div>
@@ -297,7 +297,7 @@ const OnlineLearningExpo = () => {
                   <div className="developBtn mb-3">
                     <Link href="https://appcostcalculator.redbytes.co.uk/?utm_source=edsys_edtech_dir&#038;utm_medium=wanna_make_btn&#038;utm_campaign=lead_gen">
                       <a target="_blank" className="similar-btn-app">
-                        Want to develop a similar aap?
+                        Want to develop a similar app?
                       </a>
                     </Link>
                   </div>
@@ -426,7 +426,7 @@ const OnlineLearningExpo = () => {
                 <div className="developBtn mb-3">
                   <Link href="https://appcostcalculator.redbytes.co.uk/?utm_source=edsys_edtech_dir&#038;utm_medium=wanna_make_btn&#038;utm_campaign=lead_gen">
                     <a target="_blank" className="similar-btn-app">
-                      Want to develop a similar aap?
+                      Want to develop a similar app?
                     </a>
                   </Link>
                 </div>
