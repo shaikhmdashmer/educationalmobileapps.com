@@ -1798,27 +1798,19 @@ export default function InnerSkillPage({ pagedata, allcategoriesdata }) {
     )
 }
 
-export async function getStaticPaths() {
-    const paths = skillspaths.map((skillslug) => ({
-        params: { skill: skillslug.slug },
-    }))
-
-    return {
-        paths,
-        fallback: false,
-    };
-}
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
     const allcategoriesdata = catdatalist
 
-    const pagedatares = await fetch(`https://admin.educationalmobileapps.com/skillsearch?skillSearch=${params.skill}`);
-    const pagedata = await pagedatares.json()
-    
+    let pagedata = null;
+    try {
+        const pagedatares = await fetch(`https://admin.educationalmobileapps.com/skillsearch?skillSearch=${params.skill}`);
+        pagedata = await pagedatares.json();
+    } catch (e) {}
+
     return {
         props: {
             pagedata,
             allcategoriesdata,
         },
-        revalidate: 10, // In seconds
     };
 }

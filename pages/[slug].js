@@ -1923,19 +1923,9 @@ export default function InnerSinglePage({ pagedata, allcategoriesdata, rightside
 }
 
 export async function getStaticPaths() {
-  
-
-    const catres = await fetch('https://admin.educationalmobileapps.com/educationappcategories');
-    const allcatsposts = await catres.json()
-
-    
-    const paths = allcatsposts?.message?.map((slugname) => ({
-        params: { slug: slugname?.category_slug },
-    }))
-
     return {
-        paths,
-        fallback: false,
+        paths: [],
+        fallback: 'blocking',
     };
 }
 export async function getStaticProps({ params }) {

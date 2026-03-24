@@ -122,13 +122,12 @@ export default function EdTechAppsInDetails1({edtechappsdata}) {
     )
 }
 
-export async function getStaticProps() {
-    const edtechappsdatares = await fetch('https://admin.educationalmobileapps.com/edtechappcategories?category_slug=online-learning')
-    const edtechappsdata = await edtechappsdatares.json()  
-    return {
-      props: {
-        edtechappsdata,
-      },
-      revalidate: 10,
+export async function getServerSideProps() {
+    try {
+      const edtechappsdatares = await fetch('https://admin.educationalmobileapps.com/edtechappcategories?category_slug=online-learning')
+      const edtechappsdata = await edtechappsdatares.json()
+      return { props: { edtechappsdata } }
+    } catch (e) {
+      return { props: { edtechappsdata: null } }
     }
   }

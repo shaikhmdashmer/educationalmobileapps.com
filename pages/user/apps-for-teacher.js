@@ -1910,19 +1910,23 @@ export default function UserTeachertPage({ pagedata, allcategoriesdata, rightsid
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     // const pagedata = catdatalist.filter(p => p.user.toString() == 'Teacher');
     // const pagedata = catdatalist.filter(p => p.category_slug.toString() == 'teacher-app');
     const allcategoriesdata = catdatalist
 
-    const userdatares = await fetch('https://admin.educationalmobileapps.com/educationappcategories?category_slug=teacher-app');
-    const pagedata = await userdatares.json();
-
-    // const pagedata = pagedatauser.filter(p => p.categoriesData);
+    let pagedata = null;
+    let rightsidedata = null;
+    try {
+        const userdatares = await fetch('https://admin.educationalmobileapps.com/educationappcategories?category_slug=teacher-app');
+        pagedata = await userdatares.json();
+    } catch (e) {}
 
     // right sidebar fetching data
-    const rightsideres = await fetch(`https://admin.educationalmobileapps.com/educationappcategories?user=Teacher`);
-    const rightsidedata = await rightsideres.json();
+    try {
+        const rightsideres = await fetch(`https://admin.educationalmobileapps.com/educationappcategories?user=Teacher`);
+        rightsidedata = await rightsideres.json();
+    } catch (e) {}
 
     return {
         props: {
@@ -1931,6 +1935,5 @@ export async function getStaticProps() {
             rightsidedata,
             // fulluserpagedata
         },
-        revalidate: 10, // In seconds
     };
 }

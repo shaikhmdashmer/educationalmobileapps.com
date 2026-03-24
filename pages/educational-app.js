@@ -1938,10 +1938,13 @@ export default function EducationalMobileApps({ pagedata }) {
 }
 
 export async function getStaticProps() {
-    const res = await fetch(
-        `https://admin.educationalmobileapps.com/educationappcategories?category_slug=coding-apps`
-    );
-    const pagedata = await res.json();
+    let pagedata = null;
+    try {
+        const res = await fetch(
+            `https://admin.educationalmobileapps.com/educationappcategories?category_slug=coding-apps`
+        );
+        pagedata = await res.json();
+    } catch (e) {}
 
     return {
         props: {

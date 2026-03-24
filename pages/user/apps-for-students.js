@@ -1914,8 +1914,11 @@ export async function getStaticProps() {
     const allcategoriesdata = catdatalist
 
     // right sidebar fetching data
-    const rightsideres = await fetch(`https://admin.educationalmobileapps.com/educationappcategories?user=Student`);
-    const rightsidedata = await rightsideres.json();
+    let rightsidedata = null;
+    try {
+        const rightsideres = await fetch(`https://admin.educationalmobileapps.com/educationappcategories?user=Student`);
+        rightsidedata = await rightsideres.json();
+    } catch (e) {}
 
     return {
         props: {
