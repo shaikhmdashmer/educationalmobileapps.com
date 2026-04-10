@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import PhoneInput from 'react-phone-input-2'
+import ReCAPTCHA from "react-google-recaptcha"
 
 export default function ContactFormwithoutRedirect(props) {
   // download ebook form
@@ -23,6 +24,8 @@ export default function ContactFormwithoutRedirect(props) {
   const nameRegex = /^[a-zA-Z\s]*$/; // Allows only letters and whitespace
   const [dropDownForm, setDropDown] = useState();
   const [dropDownList, setDropDownList] = useState("");
+  const recaptchaRef = useRef(null);
+  const [recaptchaToken, setRecaptchaToken] = useState("");
 
   // console.log("dropDownForm" ,dropDownForm);
 
@@ -114,6 +117,10 @@ export default function ContactFormwithoutRedirect(props) {
   //Form function
   const handleSubmit3 = async (e) => {
     e.preventDefault();
+    if (!recaptchaToken) {
+      alert("Please complete the reCAPTCHA verification.");
+      return;
+    }
 
     const ipResponse = await fetch('https://api.ipify.org?format=json');
     const ipData = await ipResponse.json();
@@ -175,8 +182,9 @@ export default function ContactFormwithoutRedirect(props) {
 
       const result = await response.json();
       setuserMsg("Check You Email");
-      router.push("/thanks"); 
-      // console.log('Success:', result);
+      recaptchaRef.current.reset();
+      setRecaptchaToken("");
+      router.push("/thanks");
     } catch (error) {
       console.error('Error:', error);
     }
@@ -295,8 +303,16 @@ export default function ContactFormwithoutRedirect(props) {
               <div className="invalid-feedback">Please enter you message</div>
             </div>
           </div>
+          <div className="col-lg-12 mb-3">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey="6LfLp64sAAAAAFEKuK4Xlclj4XdRR27s1YasyJ9z"
+              onChange={(token) => setRecaptchaToken(token)}
+              onExpired={() => setRecaptchaToken("")}
+            />
+          </div>
           <div className="col-lg-12 mb-2">
-            
+
             <button
               type="submit"
               disabled={getLoader}
