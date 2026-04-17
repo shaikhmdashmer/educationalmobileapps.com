@@ -256,6 +256,19 @@ const MainHeader = () => {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link href="/complete-edtech">
+                  <a
+                    className={
+                      router.asPath.startsWith("/complete-edtech")
+                        ? "nav-link active"
+                        : "nav-link"
+                    }
+                  >
+                    AI in Education
+                  </a>
+                </Link>
+              </li>
+              <li className="nav-item">
                 <a
                   href="#"
                   className="nav-link"
