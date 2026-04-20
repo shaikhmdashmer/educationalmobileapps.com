@@ -86,6 +86,10 @@ const siteDatabase = [
   { slug: "maven", name: "Maven", category: "Course Creators", desc: "A cohort-based course platform purpose-built for live, community-driven learning experiences. Achieves industry-leading completion rates." },
 ];
 
+export function getAllSlugs() {
+  return siteDatabase.map(item => item.slug);
+}
+
 function getDetailsBySlug(targetSlug) {
   return siteDatabase.find(item => item.slug === targetSlug) || null;
 }

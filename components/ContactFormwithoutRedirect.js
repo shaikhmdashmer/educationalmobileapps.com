@@ -207,7 +207,7 @@ export default function ContactFormwithoutRedirect(props) {
         noValidate
       >
         <div className="row form-cmt">
-          <div className="col-lg-6 mb-2">
+          <div className="col-lg-12 mb-2">
             <div className="form-field has-validation">
               <input
                 className="form-control"
@@ -229,7 +229,7 @@ export default function ContactFormwithoutRedirect(props) {
               </p>
             )}
           </div>
-          <div className="col-lg-6 mb-2">
+          <div className="col-lg-12 mb-2">
             <div className="form-field has-validation">
               <input
                 className="form-control"
@@ -248,42 +248,40 @@ export default function ContactFormwithoutRedirect(props) {
               </div>
             </div>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-12 mb-2">
             <div className="form-field has-validation">
-            <PhoneInput
-                     country={'in'}
-                    //  country={userLive ? userLive.location.country_code : 'IN'}
-                      enableSearch={true}
-                      type="text"
-                      id="phonefield"
-                      name="phonefield"
-                      aria-describedby="inputGroupPrepend"
-                      onChange={(e) => setPhoneField(e)}
-                      placeholder="Phone Number"
-                      required
-                    />
-              
+              <PhoneInput
+                country={'in'}
+                enableSearch={true}
+                type="text"
+                id="phonefield"
+                name="phonefield"
+                aria-describedby="inputGroupPrepend"
+                onChange={(e) => setPhoneField(e)}
+                placeholder="Phone Number"
+                required
+              />
             </div>
           </div>
-          <div className="col-lg-6 mb-2">
+          <div className="col-lg-12 mb-2">
             <div className="form-field has-validation">
-            <select className="form-control mediaWay" onChange={handleSelectChange}>
-                    <option selected disabled>Subject</option>
-                    {dropDownForm?.contacformdropdownredio?.map((item, index) => (
-                      <option key={index} value={item}>
-                        {item}
-                      </option>
-                    ))}
-                  </select>
-                  {otherInputVisible && (
-                    <input
-                      type="text"
-                      className="form-control other-sbj form-group my-2 has-validation"
-                      placeholder="Enter other subject"
-                      value={otherInputValue}
-                      onChange={handleOtherInputChange}
-                    />
-                  )}
+              <select className="form-control mediaWay" onChange={handleSelectChange}>
+                <option defaultValue disabled>Subject</option>
+                {dropDownForm?.contacformdropdownredio?.map((item, index) => (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+              {otherInputVisible && (
+                <input
+                  type="text"
+                  className="form-control other-sbj form-group my-2 has-validation"
+                  placeholder="Enter other subject"
+                  value={otherInputValue}
+                  onChange={handleOtherInputChange}
+                />
+              )}
             </div>
           </div>
           <div className="col-lg-12 mb-3">
@@ -297,10 +295,10 @@ export default function ContactFormwithoutRedirect(props) {
                 onChange={(e) => {
                   setMessage(e.target.value);
                 }}
-                placeholder="Your Message"
+                placeholder="Enter your message here..."
                 required
               />
-              <div className="invalid-feedback">Please enter you message</div>
+              <div className="invalid-feedback">Please enter your message</div>
             </div>
           </div>
           <div className="col-lg-12 mb-3">

@@ -19,80 +19,31 @@ const Footerstrip = () => {
           <div className="row">
             <div className="col-lg-6">
               <h3 className="mb-4">
-                <strong>Contact Information</strong>
+                <strong>It&apos;s Easy to Connect with Us</strong>
               </h3>
               <ul className="footerlistitems">
                 <li>
-                  <strong>Address:</strong>
+                  <i className="fa fa-phone-alt"></i> India: +91 8113861000
                 </li>
-                <li>
-                  <i className="fa fa-map-marker-alt"></i> 2nd Floor, T.C.
-                  67/96/13 & 14, SMH Complex, Kamaleswaram, Thiruvananthapuram,
-                  Kerala - 695009, India
-                </li>
-                {/* <li className="mt-4">
-                  <strong>Contact No.:</strong>
-                </li>
-                <li>
-                  <i className="fa fa-phone-alt"></i> India: +91 811 386 7000,
-                  <br />
-                  UK: +1 9295521900
-                </li> */}
-                <li className="mt-4">
-                  <strong>Email Address:</strong>
-                </li>
-                <li>
+                <li className="mt-3">
                   <i className="fa fa-envelope"></i>{" "}
                   <a href="mailto:info@edsys.in">info@edsys.in</a>
                 </li>
-              </ul>
-              <ul className="mt-5 footer-socialmedialinks">
-                <li>
-                  <a
-                    href="https://www.facebook.com/EdsysEducationSystems/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i className="fab fa-facebook"></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://twitter.com/EdsysEducatio"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://in.pinterest.com/educationsolutionproviders/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i className="fab fa-pinterest"></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.linkedin.com/company/edsys---a-technoalliance-company/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i className="fab fa-linkedin"></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.youtube.com/EdsysThiruvananthapuram"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i className="fab fa-youtube"></i>
-                  </a>
+                <li className="mt-3">
+                  <i className="fa fa-map-marker-alt"></i> Educational App Solutions Provider
+                  <br />
+                  <span style={{ paddingLeft: "1.4rem" }}>Connecting Learners to Technology</span>
                 </li>
               </ul>
+              <p className="mt-4 mb-2">Click here to schedule a call with us:</p>
+              <a
+                href="https://calendly.com"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-outline-primary btn-rounded"
+              >
+                <i className="fa fa-calendar-alt me-2"></i> Book Now
+              </a>
             </div>
             <div className="col-lg-6">
               <h3 className="mb-4">
